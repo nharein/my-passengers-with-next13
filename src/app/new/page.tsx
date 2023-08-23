@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "../db";
 import { redirect } from "next/navigation";
 
+// Used server action to create user at data base
 async function CreatePassenger(data: FormData){
   "use server"
   

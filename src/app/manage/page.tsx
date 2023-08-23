@@ -1,19 +1,19 @@
-
 import Link from "next/link";
 import { PassengerDelete } from "@/components/PassengerDelete";
 import { useState } from "react";
 import { prisma } from "@/app/db";
 import { redirect } from "next/navigation";
 import { getPassengers, clearAll, deleteOnePassenger } from "@/actions/actions";
+// Import server actions. It allows to make this component client
 import DeleteForm from "@/components/DeleteForm";
 import ManageList from "@/components/ManageList";
 
 
+// At this page you can delete passengers
 
 export default async function ManagePassengers(){
 
   const passengers = await getPassengers()
-  console.log(typeof(passengers))
 
   return (
     <>
@@ -22,7 +22,10 @@ export default async function ManagePassengers(){
         <header className="flex justify-between items-center mb-4 ">
           <h1 className="text-xl">Delete all users</h1>
         </header>
-        <DeleteForm clearAll={clearAll}/>
+        {/* Used clearAll server action */}
+        {/* With separate component */}
+        <DeleteForm clearAll={clearAll}/> 
+        {/* With simple form just right here */}
         <form action={clearAll} className="flex gap-2" >
           <input 
             type="text" 
@@ -34,7 +37,10 @@ export default async function ManagePassengers(){
             </div>
         </form>
       </div>
+      {/* Used server action  deleteOnePassenger */}
+      {/* With separate component */}
       <ManageList passengers={passengers}/>
+      {/* Without separate component */}
       <ul className="pl-4">
         {passengers.map(passenger => (
           <PassengerDelete key={passenger.id} {...passenger} deleteOnePassenger={deleteOnePassenger}/>
