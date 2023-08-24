@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "./db";
 import { PassengerItem } from "@/components/PassengerItem";
+import LoginAndRegisterButton from '@/components/LoginAndRegisterButton'
 
 // Function to find all passengers in data base
 function getPassengers(){
@@ -24,9 +25,10 @@ export default async function Home(){
     <>
       <header className="flex justify-between items-center mb-4 ">
         <h1 className="text-2xl">List of passengers</h1>
-        <Link className="border border-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none" href="/new">New</Link>
-        <Link className="border border-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none" href="/signup">Create</Link>
-        <Link className="border border-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none" href="/signin">Log In</Link>
+        {/* <Link className="border border-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none" href="/new">New</Link> */}
+        {/* <Link className="border border-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none" href="/signup">Create</Link> */}
+        {/* <Link className="border border-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none" href="/signin">Log In</Link> */}
+        <LoginAndRegisterButton />
       </header>
       <ul className="pl-4">
         {/* Create list of passengers */}
